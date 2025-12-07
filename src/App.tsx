@@ -1,5 +1,6 @@
 import React from 'react';
-import  Header  from './components/Header';
+import logo from './assets/maam.svg';
+import  CardNav, { type CardNavItem }  from './components/CardNav.tsx';
 import  Footer  from './components/Footer';
 import  Card  from './components/Card';
 import './App.css' ;
@@ -69,11 +70,51 @@ const teamMembers: TeamMember[] = [
 ];
 
 function App() {
+  
+  const items: CardNavItem[] = [
+    {
+      label: "About",
+      bgColor: "#0D0716",
+      textColor: "#fff",
+      links: [
+        { label: "Company", href: "/about/company", ariaLabel: "About Company" },
+        { label: "Careers", href: "/about/careers", ariaLabel: "About Careers" }
+      ]
+    },
+    {
+      label: "Projects", 
+      bgColor: "#280f51ff",
+      textColor: "#fff",
+      links: [
+        { label: "Featured", href: "/projects/featured", ariaLabel: "Featured Projects" },
+        { label: "Case Studies", href: "/projects/case-studies", ariaLabel: "Project Case Studies" }
+      ]
+    },
+    {
+      label: "Contact",
+      bgColor: "#271E37", 
+      textColor: "#fff",
+      links: [
+        { label: "Email", href: "mailto:contact@example.com", ariaLabel: "Email us" },
+        { label: "Twitter", href: "https://twitter.com/example", ariaLabel: "Twitter" },
+        { label: "LinkedIn", href: "https://linkedin.com/company/example", ariaLabel: "LinkedIn" }
+      ]
+    }
+  ];
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
-      <Header />
-      
-      <main className="container mx-auto px-4 py-12">
+      <CardNav
+        logo={logo}
+        logoAlt="Company Logo"
+        items={items}
+        baseColor="#fff"
+        menuColor="#000"
+        buttonBgColor="#111"
+        buttonTextColor="#fff"
+        ease="power3.out"
+      />
+
+      <main className="container mx-auto px-4 py-12 pt-32">
         {/* Hero Section */}
         <section className="text-center mb-16">
           <h1 className="text-5xl font-bold text-gray-800 mb-6">
